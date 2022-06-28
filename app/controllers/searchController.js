@@ -20,6 +20,23 @@ const searchController = {
     console.error(error);
     next()
   }
+  },
+
+  searchByLevel: async (req, res, next) => {
+    try{
+    level = req.query.level
+    const cards= await dataMapper.getByLevel(level)
+  
+    res.render('cardList', {
+      cards: cards,
+      title: 'recherche par level ' + level
+    })
+  }
+  catch(error)
+  {
+    console.error(error);
+    next()
+  }
   }
 }
 

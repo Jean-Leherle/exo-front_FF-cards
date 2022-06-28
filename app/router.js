@@ -11,12 +11,14 @@ router.get('/search', searchController.searchPage);
 
 router.get('/card/:id',mainController.detailPage);
 
-router.get('/search/element/', searchController.searchByElement);
+router.get('/search/element/', searchController.searchByElement)
 
 router.get('/addToDeck/:id', mainController.addCardToDeck);
 
 router.get('/deck', mainController.deckPage);
 
 router.get('/removeFromDeck/:id', mainController.removeCardFromDeck)
+
+router.get('/search/level/', searchController.searchByLevel)
 
 module.exports = router;

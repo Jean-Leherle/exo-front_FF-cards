@@ -27,6 +27,19 @@ const dataMapper = {
     
     return result.rows;
   },
+  getByLevel: async function (level) {
+    let result
+    if (level === "null") { //si l'level est null on doit changer la query car null n'existe pas en sql
+      const query = `SELECT * FROM "card" WHERE "level" IS NULL`;
+      result = await database.query(query);
+    }
+    else {
+      const query = `SELECT * FROM "card" WHERE "level" = $1 `;
+      result = await database.query(query, [level]);
+    }
+    
+    return result.rows;
+  },
 };
 
 
