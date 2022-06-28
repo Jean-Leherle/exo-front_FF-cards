@@ -38,17 +38,38 @@ const mainController = {  //remplacement des callback par une fonction classique
   addCardToDeck: async (req, res, next) => {
     try {
       id = req.params.id
+
       //Dans le cas ou la carte est déjà présente ou qu'il y ai déjà 5 cartes
-      if (!(req.session.deck.find(card => { card.id === parseInt(id) }) || req.session.length >= 5)) {
+      if (!(req.session.deck.find(card => { return parseInt(card.id) === parseInt(id) }) || req.session.deck.length >= 5)) {
         const cardDetail = await dataMapper.getOneCards(id)
-        req.session.deck.push(cardDetail)
-        res.redirect('back')
+        req.session.deck.push(cardDetail[0])
       }
+
+      res.redirect('back')
+
     }
     catch (error) {
       console.error(error)
       next()
     }
+  },
+  deckPage: (req, res) => {
+    const deckList = req.session.deck
+
+    res.render('deckList', {
+      cards: deckList,
+      title: 'votre deck'
+    });
+  },
+  removeCardFromDeck: (req, res) =>{
+    const id= req.params.id
+
+    req.session.deck = req.session.deck.filter((card) =>{
+    
+      return parseInt(card.id) !== parseInt(id)
+    })
+
+    res.redirect('back')
   }
 
 };

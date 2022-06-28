@@ -13,6 +13,10 @@ router.get('/card/:id',mainController.detailPage);
 
 router.get('/search/element/', searchController.searchByElement);
 
-router.get('/addDeck/:id', mainController.addCardToDeck);
+router.get('/addToDeck/:id', mainController.addCardToDeck);
+
+router.get('/deck', mainController.deckPage);
+
+router.get('/removeFromDeck/:id', mainController.removeCardFromDeck)
 
 module.exports = router;
