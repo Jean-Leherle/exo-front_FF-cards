@@ -53,8 +53,13 @@
   text-align: center;
 }
 
+
+
 .card img {
   min-width: 120px;
+}
+.cardDetail img {
+  width : 300px;
 }
 
 .card .cardName {

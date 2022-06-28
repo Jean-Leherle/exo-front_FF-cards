@@ -1,0 +1,22 @@
+<%- include('header') %>
+
+  <h1>
+    <%= title %>
+  </h1>
+
+  <div class="cardSContainer">
+    <div class="card cardDetail">
+      <a href="<%=card.id%>">
+        <img src="/visuals/<%= card.visual_name %>" alt="<%= card.name %> illustration">
+        <p class="cardName">
+          <%= card.name %>
+        </p>
+      </a>
+      <a class="link--addCard" title="Ajouter au deck" href="#">[ + ]</a>
+    </div>
+
+
+  </div>
+
+
+  <%- include('footer') %>
