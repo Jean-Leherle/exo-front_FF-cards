@@ -21,4 +21,6 @@ router.get('/removeFromDeck/:id', mainController.removeCardFromDeck)
 
 router.get('/search/level/', searchController.searchByLevel)
 
+router.get('/search/values/', searchController.searchByValues)
+
 module.exports = router;

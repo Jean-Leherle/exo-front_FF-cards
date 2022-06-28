@@ -37,7 +37,24 @@ const searchController = {
     console.error(error);
     next()
   }
+  },
+  searchByValues: async (req, res, next) => {
+    try{
+    direction = req.query.direction;
+    value = req.query.value;
+    const cards= await dataMapper.getByValues(direction, value)
+  
+    res.render('cardList', {
+      cards: cards,
+      title: 'recherche par direction ' + direction + ' '+ value
+    })
   }
+  catch(error)
+  {
+    console.error(error);
+    next()
+  }
+  },
 }
 
 
