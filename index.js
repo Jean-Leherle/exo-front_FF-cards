@@ -14,6 +14,10 @@ app.use(express.static('public'));
 
 app.use(router);
 
+app.use((req, res) => {
+  res.status(404).send('erreur 404');
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);
 });
