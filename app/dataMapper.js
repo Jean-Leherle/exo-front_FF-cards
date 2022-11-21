@@ -21,7 +21,7 @@ const dataMapper = {
       result = await database.query(query);
     }
     else {
-      const query = `SELECT * FROM "card" WHERE "element" = $1 `;
+      const query = `SELECT * FROM "card" WHERE "element" = $1`;
       result = await database.query(query, [element]);
     }
 
@@ -42,12 +42,10 @@ const dataMapper = {
   },
   getByValues: async function (direction, value) {
     
-    const query = `SELECT * FROM "card" WHERE "value_$1" = $2  `;
-    const result = await database.query(query, [direction, value]);
-
+    const query = `SELECT * FROM "card" WHERE "value_${direction}" = $1  `;
+    const result = await database.query(query, [value]);
     return result.rows;
   },
 };
-
 
 module.exports = dataMapper;

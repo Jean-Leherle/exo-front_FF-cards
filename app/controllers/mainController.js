@@ -21,7 +21,7 @@ const mainController = {  //remplacement des callback par une fonction classique
   },
   detailPage: async (req, res, next) => {
     try {
-      id = req.params.id
+      const id = req.params.id
       const cardDetail = await dataMapper.getOneCards(id)
       if (cardDetail) {
         res.render('cardDetail', {
@@ -37,7 +37,7 @@ const mainController = {  //remplacement des callback par une fonction classique
   },
   addCardToDeck: async (req, res, next) => {
     try {
-      id = req.params.id
+      const id = req.params.id
 
       //Dans le cas ou la carte est déjà présente ou qu'il y ai déjà 5 cartes
       if (!(req.session.deck.find(card => { return parseInt(card.id) === parseInt(id) }) || req.session.deck.length >= 5)) {

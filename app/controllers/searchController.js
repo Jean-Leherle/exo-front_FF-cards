@@ -7,9 +7,9 @@ const searchController = {
 
   searchByElement: async (req, res, next) => {
     try{
-    element = req.query.element
+    const element = req.query.element
     const cards= await dataMapper.getByElement(element)
-    console.log(cards)
+    //console.log(cards)
     res.render('cardList', {
       cards: cards,
       title: 'recherche par element ' + element
@@ -24,7 +24,7 @@ const searchController = {
 
   searchByLevel: async (req, res, next) => {
     try{
-    level = req.query.level
+    const level = req.query.level
     const cards= await dataMapper.getByLevel(level)
   
     res.render('cardList', {
@@ -40,8 +40,8 @@ const searchController = {
   },
   searchByValues: async (req, res, next) => {
     try{
-    direction = req.query.direction;
-    value = req.query.value;
+    const direction = req.query.direction;
+    const value = req.query.value;
     const cards= await dataMapper.getByValues(direction, value)
   
     res.render('cardList', {
